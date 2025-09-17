@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}Home - Retro Storefront{% endblock %}
+
+{% block content %}
+    <h2>🕹 Featured Items 🕹</h2>
+
+    <div class="item-grid">
+        {% for item in listings %}
+            <div class="item-card">
+                <a href="{{ item.url }}" target="_blank">
+                    <img src="{{ item.image }}" alt="{{ item.title }}">
+                </a>
+                <p class="item-title">
+                    {{ item.title[:25] }}{% if item.title and item.title|length > 25 %}...{% endif %}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="/?page={{ page - 1 }}" class="retro-button">⬅ Prev</a>
+        {% endif %}
+        <a href="/?page={{ page + 1 }}" class="retro-button">Next ➡</a>
+    </div>
+{% endblock %}
+

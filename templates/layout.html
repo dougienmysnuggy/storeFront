@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Retro Storefront{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo">
+        </div>
+        <h1 class="site-title">Fatz Collectibles</h1>
+        <nav class="site-nav">
+            <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('selling') }}" class="nav-link">Selling</a>
+        </nav>
+    </header>
+
+    <section class="promo">
+        <h2>💾 Want to Make Money? 💾</h2>
+        <p>
+            Sell your old video games and toys with us!  
+            Turn your childhood treasures into extra cash.
+        </p>
+        <a href="{{ url_for('selling') }}" class="retro-button">Start Selling</a>
+    </section>
+
+    <main>
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year | default(2025) }} Fatz Collectibles</p>
+    </footer>
+</body>
+</html>
